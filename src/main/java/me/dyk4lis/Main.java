@@ -1,18 +1,49 @@
 package me.dyk4lis;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.print("Hello and welcome1!");
-        System.out.println("sosati lus lejati ,bbb");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+import org.telegram.telegrambots.meta.TelegramBotsApi;
+import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
+
+
+public class Main {
+
+    public static void main(String[] args) throws TelegramApiException {
+        TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
+        CryptoBot bot = new CryptoBot();
+        botsApi.registerBot(bot);
+        var keyboardM1 = bot.getKeyboard1();
+        var keyboardM2 = bot.getKeyboard2();
+
+        //bot.buttonTap(5321280232L,"next","back",);
+        bot.sendMenu(5321280232L,"Kupi asic",keyboardM1);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
+
+
+
+
+
+
+
+
+
+
+
