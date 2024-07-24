@@ -1,12 +1,18 @@
 package me.dyk4lis;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
 
 
 public class Main {
@@ -20,6 +26,20 @@ public class Main {
 
         //bot.buttonTap(5321280232L,"next","back",);
         bot.sendMenu(5321280232L,"Kupi asic",keyboardM1);
+        ObjectMapper objectMapper = new ObjectMapper();
+
+
+        ConfigManager configManager  = ConfigManager.getInstance();
+
+
+
+
+
+
+
+//        Config config = objectMapper.readValue(employeeJson.getBytes(),Config.class);
+
+
 
 
 

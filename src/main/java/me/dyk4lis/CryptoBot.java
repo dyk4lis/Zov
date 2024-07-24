@@ -21,7 +21,7 @@ public class CryptoBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotToken() {
-        return "7209411504:AAGbtg9WJA_b49LKp99l0spLJW_f8rQQhNY";
+        return ConfigManager.getInstance().getConfigDTO().getConfig().getToken();
     }
 
     @Override
@@ -30,7 +30,7 @@ public class CryptoBot extends TelegramLongPollingBot {
         var user = msg.getFrom();
         var txt = msg.getText();
 
-        if(msg.isCommand()) {
+        if (msg.isCommand()) {
             if (txt.equals("/scream"))
                 screaming = true;
             else if (txt.equals("/whisper"))
@@ -72,55 +72,56 @@ public class CryptoBot extends TelegramLongPollingBot {
         }
 
 
+    }
 
-        }
-        public InlineKeyboardMarkup getKeyboard1() {
-            var next = InlineKeyboardButton.builder()
-                    .text("Next").callbackData("Next")
-                    .build();
-
-
-            var back = InlineKeyboardButton.builder()
-                    .text("Back").callbackData("Back")
-                    .build();
-            var url = InlineKeyboardButton.builder()
-                    .text("Kupi asik")
-                    .url("https://www.kinopoisk.ru/series/229653/?utm_referrer=www.google.com")
-                    .build();
-
-            keyboardM1 = InlineKeyboardMarkup.builder()
-                    .keyboardRow(List.of(next)).build();
-
-            keyboardM2 = InlineKeyboardMarkup.builder()
-                    .keyboardRow(List.of(back))
-                    .keyboardRow(List.of(url))
-                    .build();
+    public InlineKeyboardMarkup getKeyboard1() {
+        var next = InlineKeyboardButton.builder()
+                .text("Next").callbackData("Next")
+                .build();
 
 
-            return keyboardM1;
-        }
-        public InlineKeyboardMarkup getKeyboard2() {
-            var next = InlineKeyboardButton.builder()
-                    .text("хочешь чтобы тебя заскамили?").callbackData("хочешь чтобы тебя заскамили?")
-                    .build();
-            var back = InlineKeyboardButton.builder()
-                    .text("Ты точно этого хочешь").callbackData("Ты точно этого хочешь")
-                    .build();
-            var url = InlineKeyboardButton.builder()
-                    .text("Ну ты и лох").url("https://core.telegram.org/bots/api")
-                    .build();
+        var back = InlineKeyboardButton.builder()
+                .text("Back").callbackData("Back")
+                .build();
+        var url = InlineKeyboardButton.builder()
+                .text("Kupi asik")
+                .url("https://www.kinopoisk.ru/series/229653/?utm_referrer=www.google.com")
+                .build();
 
-            keyboardM1 = InlineKeyboardMarkup.builder()
-                    .keyboardRow(List.of(next)).build();
+        keyboardM1 = InlineKeyboardMarkup.builder()
+                .keyboardRow(List.of(next)).build();
 
-            keyboardM2 = InlineKeyboardMarkup.builder()
-                    .keyboardRow(List.of(back))
-                    .keyboardRow(List.of(url))
-                    .build();
+        keyboardM2 = InlineKeyboardMarkup.builder()
+                .keyboardRow(List.of(back))
+                .keyboardRow(List.of(url))
+                .build();
+
+
+        return keyboardM1;
+    }
+
+    public InlineKeyboardMarkup getKeyboard2() {
+        var next = InlineKeyboardButton.builder()
+                .text("хочешь чтобы тебя заскамили?").callbackData("хочешь чтобы тебя заскамили?")
+                .build();
+        var back = InlineKeyboardButton.builder()
+                .text("Ты точно этого хочешь").callbackData("Ты точно этого хочешь")
+                .build();
+        var url = InlineKeyboardButton.builder()
+                .text("Ну ты и лох").url("https://core.telegram.org/bots/api")
+                .build();
+
+        keyboardM1 = InlineKeyboardMarkup.builder()
+                .keyboardRow(List.of(next)).build();
+
+        keyboardM2 = InlineKeyboardMarkup.builder()
+                .keyboardRow(List.of(back))
+                .keyboardRow(List.of(url))
+                .build();
 
 
         return keyboardM2;
-        }
+    }
 
     public void buttonTap(Long id, String queryId, String data, int msgId) throws TelegramApiException {
 
@@ -131,10 +132,10 @@ public class CryptoBot extends TelegramLongPollingBot {
         EditMessageReplyMarkup newKb = EditMessageReplyMarkup.builder()
                 .chatId(id.toString()).messageId(msgId).build();
 
-        if(data.equals("next")) {
+        if (data.equals("next")) {
             newTxt.setText("MENU 2");
             newKb.setReplyMarkup(keyboardM2);
-        } else if(data.equals("back")) {
+        } else if (data.equals("back")) {
             newTxt.setText("MENU 1");
             newKb.setReplyMarkup(keyboardM1);
         }
@@ -148,7 +149,7 @@ public class CryptoBot extends TelegramLongPollingBot {
     }
 
 
-        }
+}
 
 
 
