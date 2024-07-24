@@ -30,6 +30,7 @@ public class Main {
 
 
         ConfigManager configManager  = ConfigManager.getInstance();
+        System.out.println("delati nexyi");
 
 
 
